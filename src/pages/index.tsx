@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import RandomFox from '@/components/RandomFox'
 import { useState } from 'react'
+import type { MouseEventHandler } from 'react'
 
 const randomNumber = () => Math.floor(Math.random() * 123) + 1
 
@@ -17,6 +18,17 @@ export default function Home() {
 
   const [images, setImages] = useState<ImageItems[]>([{ id: generateId(), url: image}])
 
+  const addNewFox: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault()
+    
+    const newImgItem: ImageItems = {
+      id: generateId(),
+      url: image
+    }
+
+    setImages([...images, newImgItem])
+  }
+
   return (
     <>
       <Head>
@@ -27,6 +39,7 @@ export default function Home() {
       </Head>
       <main>
         <h1>Hello, Platzi</h1>
+        <button onClick={addNewFox}>Add new fox</button>
         {images.map((image) => (
           <div key={image.id}>
             <RandomFox image={image.url} />

@@ -1,10 +1,15 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
 import RandomFox from '@/components/RandomFox'
+import { useState } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
+const randomNumber = () => Math.floor(Math.random() * 123) + 1
 
 export default function Home() {
+  
+  const image = `https://randomfox.ca/images/${randomNumber()}.jpg`
+
+  const [images, setImages] = useState<string[]>([image])
+
   return (
     <>
       <Head>
@@ -15,7 +20,11 @@ export default function Home() {
       </Head>
       <main>
         <h1>Hello, Platzi</h1>
-        <RandomFox />
+        {images.map((image, i) => (
+          <div key={i}>
+            <RandomFox image={image} />
+          </div>
+        ))}
       </main>
     </>
   )

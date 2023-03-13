@@ -16,11 +16,11 @@ export default function Home() {
   
   const image = `https://randomfox.ca/images/${randomNumber()}.jpg`
 
-  const [images, setImages] = useState<ImageItems[]>([{ id: generateId(), url: image}])
+  const [images, setImages] = useState<ImageItems[]>([])
 
   const addNewFox: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
-    
+
     const newImgItem: ImageItems = {
       id: generateId(),
       url: image

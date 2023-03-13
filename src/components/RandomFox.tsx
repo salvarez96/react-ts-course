@@ -1,17 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
-import Image from 'next/image'
+import React, { useRef } from 'react'
 
 export default function RandomFox(props: { image: string }) {
   
+  const node = useRef<HTMLImageElement>(null)
+
+  node.current?.src
+
   return (
-    // Image didn't work, so I won't waste more time trying to debbug it
-    // <Image
-    //   src={image}
-    //   alt='A random foxy fox'
-    //   width={200}
-    //   height={200}
-    // />
-    <img src={props.image} alt="a foxy fox" width={320} />
+    <img ref={node} src={props.image} alt="a foxy fox" width={320} />
   )
 }

@@ -40,13 +40,13 @@ export default function Home() {
       <main>
         <h1>Hello, Platzi</h1>
         <button onClick={addNewFox}>Add new fox</button>
-        {images.map((image) => (
+        {images.map((image, i) => (
           <div key={image.id}>
             <LazyImage 
               src={image.url} 
               alt='a foxy fox'
+              onLazyLoad={(e) => setTimeout(() => console.log(`Image: ${i + 1}, src: ${e.src}`), 0)}
               width={320}
-              onClick={(e) => console.log(e.currentTarget.src)} 
               />
           </div>
         ))}

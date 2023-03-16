@@ -24,6 +24,7 @@ export default function Home() {
     }
 
     setImages([...images, newImgItem])
+    window.plausible('add_fox', {callback: generateId})
   }
 
   return (

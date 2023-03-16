@@ -2,8 +2,10 @@ import Head from 'next/head'
 import LazyImage from '@/components/RandomFox'
 import { useState } from 'react'
 import type { MouseEventHandler } from 'react'
+import { random } from 'lodash'
 
-const randomNumber = () => Math.floor(Math.random() * 123) + 1
+// const randomNumber = () => Math.floor(Math.random() * 123) + 1
+const randomNumber = () => random(1, 123)
 
 const generateId = () => Math.random().toString(36).substring(2).repeat(3)
 

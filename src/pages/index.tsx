@@ -5,23 +5,18 @@ import type { MouseEventHandler } from 'react'
 
 const randomNumber = () => Math.floor(Math.random() * 123) + 1
 
-type ImageItems = {
-  id: string,
-  url: string
-}
-
 const generateId = () => Math.random().toString(36).substring(2).repeat(3)
 
 export default function Home() {
   
   const image = `https://randomfox.ca/images/${randomNumber()}.jpg`
 
-  const [images, setImages] = useState<ImageItems[]>([])
+  const [images, setImages] = useState<IFoxImageItems[]>([])
 
   const addNewFox: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
 
-    const newImgItem: ImageItems = {
+    const newImgItem: IFoxImageItems = {
       id: generateId(),
       url: image
     }
